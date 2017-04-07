@@ -2,6 +2,7 @@ const fs = require('fs');
 
 // strategies
 const updateRequireToImport = require('./processor/updateRequireToImport');
+const addImportReact = require('./processor/addImportReact');
 
 function _readFile(filename) {
   function cb(err) {
@@ -38,7 +39,8 @@ function transfer(file) {
   let commands = _parseCode(file);
 
   const processors = [
-    updateRequireToImport
+    updateRequireToImport,
+    addImportReact
   ];
 
   processors.forEach((processor) => {
