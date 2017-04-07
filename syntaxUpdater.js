@@ -31,7 +31,7 @@ function _parseCode(file) {
 }
 
 function _joinLineWithLineBreak(commands) {
-  return command.join('\n');
+  return commands.join('\n');
 }
 
 function transfer(file) {
