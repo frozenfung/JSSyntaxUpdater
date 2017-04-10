@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 // strategies
 const updateRequireToImport = require('./processor/updateRequireToImport');
@@ -56,10 +57,27 @@ function transfer(file) {
   return _joinLineWithLineBreak(commands);
 }
 
+function readThenWrite(inputFilename) {
+  const inputFile = _readFile(inputFilename);
+  const output = transfer(inputFile);
+  _writeFile(inputFilename, output);
+}
+
 // process
-const inputFilename = process.argv[2];
-const inputFile = _readFile(inputFilename);
+const ap = process.argv[2];
 
-const output = transfer(inputFile);
+fs.stat(ap, (err, stats) => {
+  if (stats.isFile()) {
+    readThenWrite(ap);
+  }
 
-_writeFile(inputFilename, output);
+  if (stats.isDirectory()) {
+    fs.readdir(ap, (err, files) => {
+      files.forEach(file => {
+        const fp = path.join(ap, file);
+        readThenWrite(fp);
+      });
+    })
+  }
+});
+
