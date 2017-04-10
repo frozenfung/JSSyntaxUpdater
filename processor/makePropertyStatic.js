@@ -53,6 +53,7 @@ const makePropertyStatic = {
 
           if (syntax.end.test(command) && copying) {
             targets.push('');
+            lineToBeRemoved.push(index);
             endCopying();
           }
         });
@@ -84,7 +85,7 @@ const makePropertyStatic = {
     }
 
     function removeTargetSyntaxFromCommands(commands) {
-      commands.splice(lineToBeRemoved[0], lineToBeRemoved.length + 1);
+      commands.splice(lineToBeRemoved[0], lineToBeRemoved.length);
     }
 
     function getEntryPoint() {
