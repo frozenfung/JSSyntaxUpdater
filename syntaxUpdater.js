@@ -5,6 +5,7 @@ const updateRequireToImport = require('./processor/updateRequireToImport');
 const addImportReact = require('./processor/addImportReact');
 const removeDuplicatedDeclarationPropTypes = require('./processor/removeDuplicatedDeclarationPropTypes');
 const replaceModuleExportsWithExportDefault = require('./processor/replaceModuleExportsWithExportDefault');
+const makePropertyStatic = require('./processor/makePropertyStatic');
 
 function _readFile(filename) {
   function cb(err) {
@@ -45,6 +46,7 @@ function transfer(file) {
     addImportReact,
     removeDuplicatedDeclarationPropTypes,
     replaceModuleExportsWithExportDefault,
+    makePropertyStatic
   ];
 
   processors.forEach((processor) => {
