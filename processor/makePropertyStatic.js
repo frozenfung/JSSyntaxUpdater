@@ -16,6 +16,9 @@ const targetSyntax = [
   }, {
     start: /\.defaultProps/,
     end: /};/,
+  }, {
+    start: /\.childContextTypes/,
+    end: /};/,
   }
 ];
 
