@@ -3,6 +3,7 @@ const fs = require('fs');
 // strategies
 const updateRequireToImport = require('./processor/updateRequireToImport');
 const addImportReact = require('./processor/addImportReact');
+const removeDuplicatedDeclarationPropTypes = require('./processor/removeDuplicatedDeclarationPropTypes');
 
 function _readFile(filename) {
   function cb(err) {
@@ -40,7 +41,8 @@ function transfer(file) {
 
   const processors = [
     updateRequireToImport,
-    addImportReact
+    addImportReact,
+    removeDuplicatedDeclarationPropTypes,
   ];
 
   processors.forEach((processor) => {
