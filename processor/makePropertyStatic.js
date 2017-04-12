@@ -7,23 +7,23 @@ Array.prototype.reIndexOf = function (rx) {
   return -1;
 };
 
-let copying = false;
-let lineToBeRemoved = [];
-const targetSyntax = [
-  {
-    start: /\.propTypes/,
-    end: /};/,
-  }, {
-    start: /\.defaultProps/,
-    end: /};/,
-  }, {
-    start: /\.childContextTypes/,
-    end: /};/,
-  }
-];
-
 const makePropertyStatic = {
   run(commands) {
+    let copying = false;
+    let lineToBeRemoved = [];
+    const targetSyntax = [
+      {
+        start: /\.propTypes/,
+        end: /};/,
+      }, {
+        start: /\.defaultProps/,
+        end: /};/,
+      }, {
+        start: /\.childContextTypes/,
+        end: /};/,
+      }
+    ];
+
     function startCopying() {
       copying = true;
     }
