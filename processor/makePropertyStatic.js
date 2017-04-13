@@ -14,13 +14,16 @@ const makePropertyStatic = {
     const targetSyntax = [
       {
         start: /\.propTypes/,
-        end: /};/,
+        end: /^}(;)?$/,
       }, {
         start: /\.defaultProps/,
-        end: /};/,
+        end: /^}(;)?$/,
       }, {
         start: /\.childContextTypes/,
-        end: /};/,
+        end: /^}(;)?$/,
+      }, {
+        start: /\.contextTypes/,
+        end: /^}(;)?$/,
       }
     ];
 
