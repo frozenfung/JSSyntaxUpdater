@@ -10,7 +10,7 @@ const addImportReact = {
       }
     });
 
-    const syntax = 'import React, { Component, PropTypes } from \'react\'\n';
+    const syntax = 'import React, { Component, PropTypes } from \'react\';\n';
 
     if (!isImportReact) {
       let newCommands = commands;
